@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seberapa Kenal Kamu dengan Muhammad Farrel</title>
+    <style>
+        body {
+            text-align: center;
+            font-size: 24px;
+        }
+        button {
+            display: block;
+            width: 80%;
+            margin: 20px auto;
+            padding: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .container {
+            display: none;
+        }
+    </style>
+    <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }function acakJawaban(id) {
+        let container = document.getElementById(id);
+        let buttons = Array.from(container.getElementsByTagName('button'));
+        shuffleArray(buttons);
+        buttons.forEach(button => container.appendChild(button));
+    }
+
+    function tampilkan(id) {
+        let containers = document.getElementsByClassName('container');
+        for (let i = 0; i < containers.length; i++) {
+            containers[i].style.display = 'none';
+        }
+        document.getElementById(id).style.display = 'block';
+        acakJawaban(id);
+    }
+
+    function gagal(link) {
+        sessionStorage.setItem("gameOver", "true");
+        window.location.href = link;
+    }
+
+    function selesai() {
+        sessionStorage.setItem("gameOver", "true");
+        tampilkan('selesai');
+        setTimeout(function() {
+            window.location.href = 'https://youtu.be/teUWsONJkk8?si=J3jc6IVr4QmHxX1l';
+        }, 5000);
+    }
+
+    function secretEnding() {
+        sessionStorage.setItem("gameOver", "true");
+        tampilkan('secretEnding');
+        setTimeout(function() {
+            window.location.href = 'https://youtu.be/Q49pnA4jsp8?si=NvWP9o1ipQtABa6d';
+        }, 3000);
+    }
+
+    window.onload = function() {
+        if (sessionStorage.getItem("gameOver") === "true") {
+            document.body.innerHTML = "<h1>Game Over! Silakan akses ulang dari link.</h1>";
+        } else {
+            tampilkan('pertanyaan0');
+        }
+    };
+</script>
+
+</head>
+<body>
+    <div id="pertanyaan0" class="container">
+        <h1>Seberapa kenal kamu dengan Muhammad Farrel?</h1>
+        <button onclick="gagal('https://youtu.be/7ODcC5z6Ca0?si=TijnLDT1Zd7t5e72')">Gak terlalu kenal</button>
+        <button onclick="tampilkan('pertanyaan1')">Kenal bangetttt</button>
+    </div><div id="pertanyaan1" class="container">
+    <h2>Apa makanan kesukaan Farrel?</h2>
+    <button onclick="gagal('https://youtu.be/yZgDfEHbgXU?si=ZXawj5r9AvAEuoEx')">Ikan</button>
+    <button onclick="gagal('https://youtu.be/yZgDfEHbgXU?si=ZXawj5r9AvAEuoEx')">Udang</button>
+    <button onclick="tampilkan('pertanyaan2')">Ayam</button>
+</div>
+
+<div id="pertanyaan2" class="container">
+    <h2>Apa love language Farrel?</h2>
+    <button onclick="gagal('https://youtu.be/JeimE8Wz6e4?si=gUwiVNRxsNk9PXvl')">Physical Touch</button>
+    <button onclick="tampilkan('pertanyaan3')">Word Affirmation</button>
+    <button onclick="gagal('https://youtu.be/JeimE8Wz6e4?si=gUwiVNRxsNk9PXvl')">Quality Time</button>
+</div>
+
+<div id="pertanyaan3" class="container">
+    <h2>Sebutkan "teman dekat wanita Farrel"</h2>
+    <button onclick="gagal('https://youtu.be/aO9KoEaEkMg?si=T-87YgUyWTnbNU89')">01010010 01101001 01110011 01101110 01100001</button>
+    <button onclick="tampilkan('pertanyaanHanifa1')">01001000 01100001 01101110 01101001 01100110 01100001</button>
+    <button onclick="selesai()">01000001 01101110 01101110 01100101</button>
+</div>
+
+<div id="pertanyaanHanifa1" class="container">
+    <h2>Kamu yakin ini teman dekat?</h2>
+    <button onclick="tampilkan('pertanyaanHanifa2')">Iya</button>
+    <button onclick="gagal('https://youtu.be/FUaaGInT_R8?si=JcNpQj2jWsDBTaly')">Tidak</button>
+</div>
+
+<div id="pertanyaanHanifa2" class="container">
+    <h2>Yakiiiiinnn?</h2>
+    <button onclick="tampilkan('pertanyaanHanifa3')">Yakin donggg</button>
+    <button onclick="gagal('https://youtu.be/FUaaGInT_R8?si=JcNpQj2jWsDBTaly')">Aduhh gak tau deh</button>
+</div>
+
+<div id="pertanyaanHanifa3" class="container">
+    <h2>Last nihh, yakinnn?</h2>
+    <button onclick="secretEnding()">Yoaiiiiii</button>
+    <button onclick="gagal('https://youtu.be/FUaaGInT_R8?si=JcNpQj2jWsDBTaly')">Aduhh gak jadi deh</button>
+</div>
+
+<div id="secretEnding" class="container">
+    <h2>Secret Ending: This is someone Farrel likes secretly but NT, shhh diam aja ya</h2>
+</div>
+
+<div id="selesai" class="container">
+    <h2>Selamat! Anda mengenal Farrel!</h2>
+</div>
+
+</body>
+</html>
